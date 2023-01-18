@@ -1,0 +1,80 @@
+﻿[B]1.1.0[/B]
+• Adapted Skin from Leia to Matrix (Kodi 18 to 19)
+• Various bugfixes caused from compatibility update
+• Several cosmetic and functional tweaks and upgrades
+
+[B]1.0.4[/B]
+• Added BusyDialog spinner to Edit Main Menu button for 5 seconds
+
+[B]1.0.3[/B]
+• Fixed View_55_WideList focusedcolor appearing dark when not focused on list of addons
+
+[B]1.0.2[/B]
+• Fixed View_55_WideList focusedcolor appearing dark when not focused on Addons screen
+
+[B]1.0.1[/B]
+• Changed DialogSelect focusedcolor to background
+
+[B]1.0.0[/B]
+• Skin officially considered completed and ready for use
+
+[B]0.2.2[/B]
+• Added a Search shortcut
+• Added a search icon
+• Changed Loading panel in widgets to hide if more than 2 items loaded
+• Changed Weather panels to hide while widget is loading
+• Changed DefaultSettingButton focusedcolor to background
+• Changed MediaMenuItemsCommon focusedcolor to background
+• Changed Settings menus button's focusedcolor to background
+• Fixed View 50 & 55 focused item remaining dark text even while "not focused"
+
+[B]0.2.1[/B]
+• Added Weather widgets
+• Replaced "Popular Movies" (duplicate of New Movies) with "Box Office Movies"
+
+[B]0.2.0[/B]
+• Added Defualt Property values for default widgets
+• Added preview of Skin-Shortcuts menu icons in editor menu
+• Changed Skin-Shortcuts default icon to a dot
+• Changed Menu-sidebar (ContentPanel) color to 'primary_background'
+• Fixed menu item icon not appearing when default icon selected
+• Fixed Square widgets feature not working
+• Fixed (I think) default menu going blank when adding a new custom menu item
+• Made Netflix_bg & Fanart_bg relationally toggled opposite each other
+• Moved 'Fade Widgets' setting to 'Visuals (Artwork)' tab
+
+[B]0.1.9[/B]
+• Added a 1st-time-run pop-up to set some global settings
+• Fixed Information screen to use a BusyDialog popup for a few seconds
+
+[B]0.1.8[/B]
+• Added Genre to MyVideoNav menu
+• Changed Information screen buttons focus text color to 'background'
+• Fixed background fade when in the main menu to hopefully be less impactfull on the eyes
+
+[B]0.1.7[/B]
+• Added background fade when in the main menu with menu option
+• Changed button focus text color to 'background' on main menu, view_50, view_55, settings, & filemanager
+• Fixed Main Menu selected item appearing dark when selecting power options
+• Fixed Unwatched Episodes displaying episodes in descending order instead of ascending
+• Removed Lighten style from fonts
+
+[B]0.1.6[/B]
+• Re-added Tempest Movies & TV Shows menu items
+
+[B]0.1.5[/B]
+• Added GB translation as well in addon.xml and included a disclaimer.
+• Removed Tempest Movies & TV Shows menu items
+
+[B]0.1.4[/B]
+• Added a better Widget Loading panel
+• Added an "Empty Widget" panel & menu option
+• Fixed quick-menu-switching bug selecting the wrong widgets
+• Fixed Slide Animations to work properly both in and out now
+
+[B]0.1.3[/B]
+• Re-arranged some things
+• Made main menu hide/reveal
+
+[B]0.1.0[/B]
+• Initial commit

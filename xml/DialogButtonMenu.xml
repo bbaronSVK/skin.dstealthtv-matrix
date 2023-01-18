@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>9000</defaultcontrol>
+  <onload>SetProperty(ds_dialogbuttonmenu_submenu,Power Menu)</onload>
+	<controls>
+    <control type="button">
+      <include>FullscreenDimensions</include>
+      <animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+      <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+      <texturefocus colordiffuse="D0FFFFFF">colors/black.png</texturefocus>
+      <texturenofocus colordiffuse="D0FFFFFF">colors/black.png</texturenofocus>
+      <onup>Control.SetFocus(9000,-1)</onup>
+      <ondown>Control.SetFocus(9000,-1)</ondown>
+    </control>
+    <control type="group">
+      <include>FullscreenDimensions</include>
+      <include>Animation_DialogPopupOpenClose</include>
+      <control type="group">
+        <centerleft>50%</centerleft>
+        <centertop>50%</centertop>
+        <width>600</width>
+        <height>700</height>
+        <include content="ds_titlebar">
+          <param name="header_id" value="2" />
+          <param name="header_label" value="$INFO[Window.Property(ds_dialogbuttonmenu_submenu)]" />
+        </include>
+        <control type="panel" id="9000">
+          <!-- POWER MENU -->
+          <include>ButtonMenuList</include>
+          <content>
+            <item>
+              <label>TEST</label>
+              <onclick>dialog.close(all,true)</onclick>
+              <onclick>ActivateWindow(1131)</onclick>
+              <visible>false</visible>
+            </item>
+            <item>
+              <!-- Favourites -->
+              <label>$LOCALIZE[1036]</label>
+              <onclick>dialog.close(all,true)</onclick>
+              <onclick>ActivateWindow(favourites)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Menu)</visible>
+            </item>
+            <item>
+              <label>Settings..</label>
+              <onclick>SetProperty(ds_dialogbuttonmenu_submenu,"Settings Options")</onclick>
+              <onclick>SetFocus(9000,0)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Menu)</visible>
+            </item>
+            <item>
+              <label>Power Options..</label>
+              <onclick>SetProperty(ds_dialogbuttonmenu_submenu,"Power Options")</onclick>
+              <onclick>SetFocus(9000,0)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Menu)</visible>
+            </item>
+            <item>
+              <!-- Reload Skin -->
+              <label>$LOCALIZE[20183]</label>
+              <onclick>dialog.close(all,true)</onclick>
+              <onclick>ReloadSkin()</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Menu)</visible>
+            </item>
+            <item>
+              <!-- Exit -->
+              <label>$LOCALIZE[13012] Kodi</label>
+              <onclick>Quit()</onclick>
+              <visible>System.ShowExitButton</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Menu)</visible>
+            </item>
+
+            <!-- SETTINGS OPTIONS -->
+            <item>
+              <label>&lt;&lt; ..</label>
+              <onclick>SetProperty(ds_dialogbuttonmenu_submenu,Power Menu)</onclick>
+              <onclick>SetFocus(9000,1)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Settings Options)</visible>
+            </item>
+            <item>
+              <!-- Appearance Settings -->
+              <label>$LOCALIZE[24997] settings</label>
+              <onclick>dialog.close(all,true)</onclick>
+              <onclick>ActivateWindowAndFocus(appearancesettings,-100,0,-76,0)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Settings Options)</visible>
+            </item>
+            <item>
+              <!-- Skin Settings -->
+              <label>$LOCALIZE[20077]</label>
+              <onclick>dialog.close(all,true)</onclick>
+              <onclick>ActivateWindow(skinsettings)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Settings Options)</visible>
+            </item>
+            <item>
+              <!-- Kodi Settings -->
+              <label>Kodi $LOCALIZE[21417]</label>
+              <onclick>dialog.close(all,true)</onclick>
+              <onclick>ActivateWindow(settings)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Settings Options)</visible>
+            </item>
+
+            <!-- POWER OPTIONS -->
+            <item>
+              <label>&lt;&lt; ..</label>
+              <onclick>SetProperty(ds_dialogbuttonmenu_submenu,Power Menu)</onclick>
+              <onclick>SetFocus(9000,2)</onclick>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+            <item>
+              <!-- Log off <profileName> -->
+              <label>$LOCALIZE[20126] "$INFO[system.profilename]"</label>
+              <onclick>dialog.close(all,true)</onclick>
+              <onclick>System.LogOff</onclick>
+              <visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
+              <visible>System.Loggedon</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+            <item>
+              <!-- Custom shutdown timer -->
+              <label>$LOCALIZE[20150]</label>
+              <onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
+              <visible>!System.HasAlarm(shutdowntimer)</visible>
+              <visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+            <item>
+              <!-- Cancel shutdown timer -->
+              <label>$LOCALIZE[20151] $INFO[System.AlarmPos,(,)]</label>
+              <onclick>CancelAlarm(shutdowntimer)</onclick>
+              <visible>System.HasAlarm(shutdowntimer)</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+            <item>
+              <!-- Inhibit Idle Shutdown -->
+              <label>$LOCALIZE[13017]</label>
+              <onclick>InhibitIdleShutdown(true)</onclick>
+              <visible>System.HasShutdown +!System.IsInhibit</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+            <item>
+              <!-- Allow Idle Shutdown -->
+              <label>$LOCALIZE[13018]</label>
+              <onclick>InhibitIdleShutdown(false)</onclick>
+              <visible>System.HasShutdown + System.IsInhibit</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+            <item>
+              <!-- Reboot -->
+              <label>$LOCALIZE[13013]</label>
+              <onclick>Reset()</onclick>
+              <visible>System.CanReboot</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+            <item>
+              <!-- Power off system -->
+              <label>$LOCALIZE[13016]</label>
+              <onclick>Powerdown()</onclick>
+              <visible>System.CanPowerDown</visible>
+              <visible>String.IsEqual(Window.Property(ds_dialogbuttonmenu_submenu),Power Options)</visible>
+            </item>
+          </content>
+        </control>
+      </control>
+    </control>
+	</controls>
+</window>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcuts>
+	<shortcut>
+		<labelID>moviesinprogress</labelID>
+		<label>Movies In Progress</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>recentlyaddedmovies</labelID>
+		<label>Recently Added Movies</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>unwatchedmovies</labelID>
+		<label>Unwatched Movies</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>randommovies</labelID>
+		<label>Random Movies</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>moviesbygenre</labelID>
+		<label>Movies By Genre</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>moviesbyyear</labelID>
+		<label>Movies By Year</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+</shortcuts>

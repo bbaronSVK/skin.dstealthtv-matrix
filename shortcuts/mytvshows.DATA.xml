@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcuts>
+	<shortcut>
+		<labelID>unwatchedepisodes</labelID>
+		<label>Unwatched Episodes</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>showsinprogress</labelID>
+		<label>Shows In Progress</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>unwatchedshows</labelID>
+		<label>Unwatched Shows</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>showsbygenre</labelID>
+		<label>Shows By Genre</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>showsbyyear</labelID>
+		<label>Shows By Year</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>showsbystudio</labelID>
+		<label>Shows By Studio</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+</shortcuts>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcuts>
+	<shortcut>
+		<labelID>conditions</labelID>
+		<label>Conditions</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>forecast</labelID>
+		<label>Forecast</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>hourly</labelID>
+		<label>Hourly</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+</shortcuts>

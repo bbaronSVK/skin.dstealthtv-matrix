@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcuts>
+	<shortcut>
+		<labelID>myfavourites</labelID>
+		<label>My Favourites</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+  <shortcut>
+    <labelID>androidapps</labelID>
+    <label>Android Apps</label>
+    <label2 />
+    <icon />
+    <thumb />
+    <action />
+  </shortcut>
+</shortcuts>

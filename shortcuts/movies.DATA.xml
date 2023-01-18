@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcuts>
+  <shortcut>
+    <labelID>intheatres</labelID>
+    <label>In Theatres</label>
+    <label2 />
+    <icon />
+    <thumb />
+    <action />
+  </shortcut>
+  <shortcut>
+    <labelID>newmovies</labelID>
+    <label>New Movies</label>
+    <label2 />
+    <icon />
+    <thumb />
+    <action />
+  </shortcut>
+	<shortcut>
+		<labelID>trendingmovies</labelID>
+		<label>Trending Movies</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+  <shortcut>
+    <labelID>popularmovies</labelID>
+    <label>Popular Movies</label>
+    <label2 />
+    <icon />
+    <thumb />
+    <action />
+  </shortcut>
+	<shortcut>
+		<labelID>moviegenres</labelID>
+		<label>Movie Genres</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+</shortcuts>

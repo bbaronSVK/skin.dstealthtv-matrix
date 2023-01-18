@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shortcuts>
+	<shortcut>
+		<labelID>newtvshows</labelID>
+		<label>New TV Shows</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>returningtvshows</labelID>
+		<label>Returning TV Shows</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>trendingtvshows</labelID>
+		<label>Trending TV Shows</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>showsairingtoday</labelID>
+		<label>Shows Airing Today</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>tvgenres</labelID>
+		<label>TV Genres</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+	<shortcut>
+		<labelID>tvnetworks</labelID>
+		<label>TV Networks</label>
+		<label2 />
+		<icon />
+		<thumb />
+		<action />
+	</shortcut>
+</shortcuts>

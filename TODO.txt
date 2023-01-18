@@ -1,0 +1,10 @@
+BUGS:
+- Netflix fanart preview (top-right corner image) stays black when changing color themes
+- List viewtype rating font over poster hard to see
+- Add-ons page menu items need loading widgets
+
+TODO:
+- create convenience page for Kodi settings inside Skin settings
+- build up DSHelper and use premade widgets
+- remove old Tempest widget presets
+- add touchscreen support

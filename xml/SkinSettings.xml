@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<include>ds_customsettings</include>
+	<defaultcontrol>9001</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<onload condition="String.IsEmpty(Skin.String(background_overlay))">Skin.SetString(background_overlay,1)</onload>
+	<onload>SetFocus(9001)</onload>
+	<controls>
+		<include>DefaultBackground</include>
+		<control type="multiimage">
+			<depth>DepthBackground</depth>
+			<include>FullScreenDimensions</include>
+			<aspectratio>scale</aspectratio>
+			<fadetime>600</fadetime>
+			<animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
+			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<imagepath background="true" colordiffuse="bg_overlay">$INFO[Skin.String(HomeFanart.path)]settings$INFO[Skin.String(HomeFanart.ext)]</imagepath>
+			<visible>!Player.HasMedia + !String.IsEmpty(Skin.String(HomeFanart.path))</visible>
+		</control>
+		<control type="group" id="9001">
+			<depth>DepthContentPanel</depth>
+			<left>0</left>
+			<include>OpenClose_Left</include>
+			<include content="ContentPanel">
+				<param name="width" value="530" />
+			</include>
+			<control type="list" id="9000">
+				<description>button area</description>
+				<left>0</left>
+				<top>160</top>
+				<width>470</width>
+				<height>800</height>
+				<onleft>8001</onleft>
+				<onright>8001</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<itemlayout height="90" width="470">
+					<control type="label">
+						<textoffsetx>30</textoffsetx>
+						<width>470</width>
+						<height>90</height>
+						<label>$INFO[ListItem.Label]</label>
+						<font>font37</font>
+						<aligny>center</aligny>
+					</control>
+				</itemlayout>
+				<focusedlayout height="90" width="470">
+					<control type="image">
+						<width>470</width>
+						<height>90</height>
+						<texture colordiffuse="button_focus">lists/focus.png</texture>
+						<animation effect="fade" start="100" end="50" time="40" condition="!Control.HasFocus(9000)">Conditional</animation>
+					</control>
+					<control type="label">
+						<textoffsetx>30</textoffsetx>
+						<width>470</width>
+						<height>90</height>
+						<font>font37</font>
+						<textcolor>background</textcolor>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>General</label>
+						<onclick>noop</onclick>
+						<property name="description">General settings applying to all areas of the skin.</property>
+					</item>
+					<item id="2">
+						<label>Main Menu</label>
+						<onclick>noop</onclick>
+						<property name="description">Main menu-related settings: Configure the home screen to your likings.</property>
+					</item>
+					<item id="3">
+						<label>Visuals</label>
+						<onclick>noop</onclick>
+						<property name="description">Adjust visual settings.</property>
+					</item>
+					<item id="9">
+						<label>Reset Settings</label>
+						<onclick>noop</onclick>
+						<property name="description">Reset default settings or the Menu items and widgets.</property>
+					</item>
+				</content>
+			</control>
+		</control>
+		<control type="group" id="8001">
+			<left>470</left>
+			<include>OpenClose_Right</include>
+			<!-- GENERAL Submenu -->
+			<control type="grouplist" id="8100">
+				<top>160</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>8100</onup>
+				<ondown>8100</ondown>
+				<visible>Container(9000).HasFocus(1)</visible>
+				<!-- use slide animations -->
+				<control type="radiobutton" id="8101">
+          <include>DefaultSettingButton</include>
+					<label>$LOCALIZE[31095]</label>
+          <onfocus>SetProperty(ds_setdesc, "Toggles some of the visual effects throughout the skin.")</onfocus>
+					<onclick>Skin.ToggleSetting(no_slide_animations)</onclick>
+          <selected>!Skin.HasSetting(no_slide_animations)</selected>
+				</control>
+				<!-- enable auto scrolling plot -->
+				<control type="radiobutton" id="8102">
+          <include>DefaultSettingButton</include>
+          <label>$LOCALIZE[20189]</label>
+          <onfocus>SetProperty(ds_setdesc, "Toggles whether the plot area will autoscroll.")</onfocus>
+					<onclick>Skin.ToggleSetting(autoscroll)</onclick>
+					<selected>Skin.HasSetting(autoscroll)</selected>
+				</control>
+        <!-- hide media flags -->
+        <control type="radiobutton" id="8105">
+          <include>DefaultSettingButton</include>
+          <label>$LOCALIZE[31160]</label>
+          <onfocus>SetProperty(ds_setdesc, "Show/Hide media flags.")</onfocus>
+          <onclick>Skin.ToggleSetting(hide_mediaflags)</onclick>
+          <selected>!Skin.HasSetting(hide_mediaflags)</selected>
+        </control>
+				<!-- show weather info -->
+				<control type="radiobutton" id="8103">
+          <include>DefaultSettingButton</include>
+					<label>$LOCALIZE[31093]</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Adds current weather info to top bar.")</onfocus>
+          <onclick condition="!String.IsEmpty(Weather.Plugin)">Skin.ToggleSetting(show_weatherinfo)</onclick>
+          <onclick condition="String.IsEmpty(Weather.Plugin)">ActivateWindow(servicesettings,weather)</onclick>
+          <selected>Skin.HasSetting(show_weatherinfo) + !String.IsEmpty(Weather.Plugin)</selected>
+				</control>
+				<!-- touch mode -->
+				<control type="radiobutton" id="8104">
+          <include>DefaultSettingButton</include>
+					<label>$LOCALIZE[31158] (experimental/unsupported)</label>
+					<onfocus>SetProperty(ds_setdesc, "Enabled: Shows some extra buttons for touchscreen.[CR]NOTE: Some aspects of the skin may not work correctly with touoch.")</onfocus>
+					<onclick>Skin.ToggleSetting(touchmode)</onclick>
+					<selected>Skin.HasSetting(touchmode)</selected>
+				</control>
+			</control>
+			<!-- MAIN MENU Submenu -->
+			<control type="grouplist" id="8200">
+				<top>160</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>8200</onup>
+				<ondown>8200</ondown>
+				<visible>Container(9000).HasFocus(2)</visible>
+				<!-- Edit main menu -->
+				<control type="button" id="8201">
+          <include>DefaultSettingButton</include>
+					<label>Edit Main Menu</label>
+          <onfocus>SetProperty(ds_setdesc, "Edit the Main Menu items and widgets.")</onfocus>
+					<onclick condition="System.HasAddon(script.skinshortcuts)">RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+					<onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
+				</control>
+        <!-- show power btn -->
+        <control type="radiobutton" id="8202">
+          <include>DefaultSettingButton</include>
+          <label>Show Power button</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Displays the power button at the top of the main menu (can still be accessed by holding the Back button).")</onfocus>
+          <onclick>Skin.ToggleSetting(show_btn_power)</onclick>
+          <selected>Skin.HasSetting(show_btn_power)</selected>
+        </control>
+        <!-- show addons btn -->
+        <control type="radiobutton" id="8203">
+          <include>DefaultSettingButton</include>
+          <label>Show Addons button</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Displays the addon browser button at the top of the main menu.")</onfocus>
+          <onclick>Skin.ToggleSetting(show_btn_addons)</onclick>
+          <selected>Skin.HasSetting(show_btn_addons)</selected>
+        </control>
+        <!-- show settings btn -->
+        <control type="radiobutton" id="8204">
+          <include>DefaultSettingButton</include>
+          <label>Show Settings button</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Displays the settings button at the top of the main menu (can still be accessed by holding the Back button).")</onfocus>
+          <onclick>Skin.ToggleSetting(show_btn_settings)</onclick>
+          <selected>Skin.HasSetting(show_btn_settings)</selected>
+        </control>
+        <!-- show profile avatar -->
+				<control type="radiobutton" id="8205">
+          <include>DefaultSettingButton</include>
+					<label>Show profile avatar</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Displays the logged in user's avatar in the bottom-left corner of the main menu.")</onfocus>
+          <onclick condition="Skin.HasSetting(show_profileavatar)">Skin.Reset(show_profileavatar)</onclick>
+          <onclick condition="!Skin.HasSetting(show_profileavatar)">Skin.SetBool(show_profileavatar)</onclick>
+          <selected>Skin.HasSetting(show_profileavatar)</selected>
+				</control>
+				<!-- show Browse Widget item -->
+				<control type="radiobutton" id="8206">
+          <include>DefaultSettingButton</include>
+          <label>Show "Browse Widget" item in widgets</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Displays an extra item to the left of all posters to browse that widget in list view.")</onfocus>
+          <onclick condition="Skin.HasSetting(show_browsewidget)">Skin.Reset(show_browsewidget)</onclick>
+          <onclick condition="!Skin.HasSetting(show_browsewidget)">Skin.SetBool(show_browsewidget)</onclick>
+          <selected>Skin.HasSetting(show_browsewidget)</selected>
+				</control>
+				<!-- show Empty Widgets item -->
+				<control type="radiobutton" id="8207">
+          <include>DefaultSettingButton</include>
+          <label>Show empty widgets</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Shows an \"Empty\" item inside empty widgets.[CR]NOTE: May be buggy for widgets with just 1 item.")</onfocus>
+          <onclick condition="Skin.HasSetting(show_emptywidgets)">Skin.Reset(show_emptywidgets)</onclick>
+          <onclick condition="!Skin.HasSetting(show_emptywidgets)">Skin.SetBool(show_emptywidgets)</onclick>
+          <selected>Skin.HasSetting(show_emptywidgets)</selected>
+				</control>
+			</control>
+			<!-- VISUALS Submenu -->
+			<control type="grouplist" id="8300">
+				<top>160</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>8300</onup>
+				<ondown>8300</ondown>
+				<visible>Container(9000).HasFocus(3)</visible>
+				<!-- Choose background pattern -->
+				<control type="button" id="8301">
+          <include>DefaultSettingButton</include>
+          <label>$LOCALIZE[31156]</label>
+          <label2>$VAR[BackgroundOverlayTypeVar]</label2>
+          <onfocus>SetProperty(ds_setdesc, "Switch between the different background patterns.")</onfocus>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),7)">Skin.SetString(background_overlay,0)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),6)">Skin.SetString(background_overlay,7)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),5)">Skin.SetString(background_overlay,6)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),4)">Skin.SetString(background_overlay,5)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),3)">Skin.SetString(background_overlay,4)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),2)">Skin.SetString(background_overlay,3)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),1)">Skin.SetString(background_overlay,2)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(background_overlay),0)">Skin.SetString(background_overlay,1)</onclick>
+				</control>
+				<!-- use netflix type background -->
+				<control type="radiobutton" id="8302">
+          <include>DefaultSettingButton</include>
+					<label>Use solid background with fanart in corner in Home screen</label>
+          <onfocus>SetProperty(ds_setdesc, "Toggle whether to display a solid background with fanart in corner.")</onfocus>
+          <onclick>Skin.ToggleSetting(netflix_bg)</onclick>
+          <selected>Skin.HasSetting(netflix_bg)</selected>
+				</control>
+				<!-- show media fanart -->
+				<control type="radiobutton" id="8303">
+          <include>DefaultSettingButton</include>
+          <label>$LOCALIZE[31002]</label>
+          <onfocus>SetProperty(ds_setdesc, "Toggle whether to display fullscreen fanart backgrounds.")</onfocus>
+					<onclick>Skin.ToggleSetting(no_fanart)</onclick>
+					<selected>!Skin.HasSetting(no_fanart)</selected>
+				</control>
+				<!-- choose skin fanart pack -->
+				<control type="button" id="8304">
+          <include>DefaultSettingButton</include>
+          <label>$LOCALIZE[31131]</label>
+          <label2>$INFO[Skin.String(HomeFanart.name)]</label2>
+          <onfocus>SetProperty(ds_setdesc, "If using fanart as background, optionally select a specific fanart pack.")</onfocus>
+          <onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=HomeFanart&amp;type=resource.images.skinbackgrounds)</onclick>
+          <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+          <enable>!Skin.HasSetting(no_fanart)</enable>
+				</control>
+				<!-- fade widgets -->
+				<control type="radiobutton" id="8305">
+          <include>DefaultSettingButton</include>
+          <label>Fade Background when Main Menu</label>
+          <onfocus>SetProperty(ds_setdesc, "Enabled: Fades the background while the main menu is visible.")</onfocus>
+					<selected>Skin.HasSetting(fade_widgets)</selected>
+					<onclick condition="Skin.HasSetting(fade_widgets)">Skin.Reset(fade_widgets)</onclick>
+					<onclick condition="!Skin.HasSetting(fade_widgets)">Skin.SetBool(fade_widgets)</onclick>
+				</control>
+        <!-- show widget item titles -->
+        <control type="radiobutton" id="8306">
+          <include>DefaultSettingButton</include>
+          <label>Show Widget-Item titles</label>
+          <onfocus>SetProperty(ds_setdesc, "Toggle whether to display the widget-item's title over the item thumbnail.")</onfocus>
+          <onclick>Skin.ToggleSetting(show_widget_titles)</onclick>
+          <selected>Skin.HasSetting(show_widget_titles)</selected>
+        </control>
+			</control>
+			<!-- RESET SETTINGS Submenu -->
+			<control type="grouplist" id="8900">
+				<top>160</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>8900</onup>
+				<ondown>8900</ondown>
+				<visible>Container(9000).HasFocus(9)</visible>
+				<!-- reset skin settings -->
+				<control type="button" id="8901">
+          <include>DefaultSettingButton</include>
+          <label>!!! Reset skin settings to default !!!</label>
+          <onfocus>SetProperty(ds_setdesc, "Reset all menu settings back to default.")</onfocus>
+					<onclick>ActivateWindow(1131)</onclick>
+				</control>
+				<!-- reset 1st run -->
+				<control type="button" id="8902">
+          <include>DefaultSettingButton</include>
+          <label>!!! Reset Home screen 1st Run Prompt !!!</label>
+          <onfocus>SetProperty(ds_setdesc, "Make it so that the 1st-time-run message appears at the home screen.")</onfocus>
+					<onclick>ActivateWindow(1132)</onclick>
+				</control>
+				<!-- reset main menu -->
+				<control type="button" id="8903">
+          <include>DefaultSettingButton</include>
+          <label>!!! Reset Main Menu to default !!!</label>
+          <onfocus>SetProperty(ds_setdesc, "Reset Main Menu items and widgets back to default.")</onfocus>
+          <onclick>ActivateWindow(1133)</onclick>
+				</control>
+				
+			</control>
+			
+			<control type="image">
+				<description>Top horizontal line</description>
+				<left>0</left>
+				<top>160</top>
+				<right>0</right>
+				<height>3</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+			<control type="image">
+				<description>Bottom horizontal line</description>
+				<left>0</left>
+				<bottom>134</bottom>
+				<right>0</right>
+				<height>3</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+		</control>
+		<control type="group">
+			<right>0</right>
+			<top>163</top>
+			<bottom>137</bottom>
+			<width>60</width>
+			<control type="scrollbar" id="60">
+				<right>0</right>
+				<top>0</top>
+				<bottom>0</bottom>
+				<width>12</width>
+				<orientation>vertical</orientation>
+				<texturesliderbackground />
+				<animation effect="slide" end="6,0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(60)">conditional</animation>
+				<onleft>8001</onleft>
+				<onright>8001</onright>
+				<animation effect="fade" start="0" end="100" time="200" delay="300">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="200">Hidden</animation>
+				<animation effect="fade" start="0" end="100" delay="300" time="320">WindowOpen</animation>
+				<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>
+				<hitrect x="0" y="0" w="60" h="100%" />
+				<visible>Control.IsVisible(9900)</visible>
+			</control>
+		</control>
+		<include content="TopBar">
+			<param name="breadcrumbs_label" value="$LOCALIZE[5] / $LOCALIZE[20077]" />
+		</include>
+		<include>BottomBar</include>
+		<control type="image">
+			<include>OpenClose_Right</include>
+			<left>75</left>
+			<bottom>27</bottom>
+			<width>300</width>
+			<height>100</height>
+			<texture colordiffuse="button_focus">dstv/dstv_logo.png</texture>
+		</control>
+		<control type="textbox" id="6">
+			<include>OpenClose_Right</include>
+			<description>description area</description>
+			<left>510</left>
+			<bottom>5</bottom>
+			<width>1350</width>
+			<height>125</height>
+			<font>font37</font>
+			<align>justify</align>
+			<textcolor>button_focus</textcolor>
+			<label>$VAR[ds_DescriptionVar]</label>
+			<autoscroll time="3000" delay="3000" repeat="5000">true</autoscroll>
+		</control>
+    
+    <control type="group">
+      <!-- Loading Spinner for when skinshortcuts is loading the Edit Menu section -->
+      <include>FullscreenDimensions</include>
+      <animation effect="fade" start="0" end="100" time="300">Visible</animation>
+      <animation effect="fade" start="100" end="0" time="200">Hidden</animation>
+      <visible>!String.IsEmpty(Window(home).Property(skinshortcuts-loading))</visible>
+      <control type="button">
+        <texturefocus colordiffuse="D0FFFFFF">colors/black.png</texturefocus>
+        <texturenofocus colordiffuse="D0FFFFFF">colors/black.png</texturenofocus>
+        <onclick>noop</onclick>
+        <label>$INFO[Window(home).Property(skinshortcuts-loading)]</label>
+      </control>
+      <control type="image">
+        <centerleft>50%</centerleft>
+        <centertop>50%</centertop>
+        <width>80</width>
+        <height>80</height>
+        <aspectratio>keep</aspectratio>
+        <animation effect="rotate" end="-45" center="auto" time="200" delay="600" loop="true" reversible="false" condition="true">Conditional</animation>
+        <texture colordiffuse="button_focus">spinner.png</texture>
+      </control>
+      <control type="image">
+        <centerleft>50%</centerleft>
+        <centertop>50%</centertop>
+        <width>50</width>
+        <height>50</height>
+        <aspectratio>keep</aspectratio>
+        <animation effect="rotate" end="45" center="auto" time="200" delay="600" loop="true" reversible="false" condition="true">Conditional</animation>
+        <texture flipx="true" colordiffuse="button_focus">spinner.png</texture>
+      </control>
+    </control>
+	</controls>
+</window>

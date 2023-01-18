@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="DSTVHome">
+    <definition>
+		  <control type="group">
+			  <include>HomeMenuRight</include>
+        <include>HomeBgFades</include>
+			  <include>HomeMenuLeft</include>
+        <include>HomeTopNBottomBars</include>
+        <include>HomeMenuLogos</include>
+		  </control>
+    </definition>
+	</include>
+
+  <include name="HomeMenuRight">
+    <control type="group" id="2000">
+      <width>100%</width>
+      <include>OpenClose_Right</include>
+      <include>InfoArea</include>
+      <include>skinshortcuts-template-ss_widgets</include>
+    </control>
+  </include>
+  <include name="InfoArea">
+    <control type="group">
+      <left>0</left>
+      <top>0</top>
+      <!-- Fanart corner image -->
+      <control type="image">
+        <visible>Skin.HasSetting(netflix_bg) + !Player.HasMedia</visible>
+        <right>0</right>
+        <top>0</top>
+        <width>55%</width>
+        <height>50%</height>
+        <aspectratio aligny="top">stretch</aspectratio>
+        <texture>$VAR[ds_infoFanart]</texture>
+        <fadetime>500</fadetime>
+      </control>
+      <!-- Netflix corner display fade -->
+      <control type="image">
+        <visible>Skin.HasSetting(netflix_bg) + !Player.HasMedia</visible>
+        <left>0</left>
+        <top>0</top>
+        <width>100%</width>
+        <height>100%</height>
+        <texture colordiffuse="primary_background">dstv/netflix.png</texture>
+      </control>
+    </control>
+    <control type="group">
+      <left>10</left>
+      <top>0</top>
+      <!-- InfoArea background image -->
+      <control type="image">
+        <visible>[Control.HasFocus(9000) | ListItem.Property(weather) | ![ListItem.IsCollection | String.IsEmpty(ListItem.Plot)]] + !Skin.HasSetting(netflix_bg)</visible>
+        <left>-50</left>
+        <top>-25</top>
+        <width>60%</width>
+        <height>60%</height>
+        <aspectratio aligny="top">stretch</aspectratio>
+        <texture colordiffuse="info_background">dstv/info_bg.png</texture>
+        <fadetime>500</fadetime>
+      </control>
+      <!-- Title -->
+      <control type="label">
+        <left>100</left>
+        <top>75</top>
+        <width>50%</width>
+        <height>75</height>
+        <aligny>left</aligny>
+        <font>font52_title</font>
+        <label>$VAR[ds_infoTitle]</label>
+        <scroll>true</scroll>
+        <autoscroll delay="1000" time="1500" repeat="1">true</autoscroll>
+      </control>
+      <!-- Date -->
+      <control type="label">
+        <left>100</left>
+        <top>145</top>
+        <width>135</width>
+        <height>40</height>
+        <align>center</align>
+        <aligny>center</aligny>
+        <font>font_flag</font>
+        <textcolor>button_focus</textcolor>
+        <label>$VAR[ds_infoDate]</label>
+        <scroll>true</scroll>
+        <autoscroll delay="1000" time="1500" repeat="1">true</autoscroll>
+      </control>
+      <!-- Duration -->
+      <control type="label">
+        <visible>!String.IsEmpty(ListItem.Duration(hh:mm:ss)) | !String.IsEmpty(Window(home).Property(ds_info_duration))</visible>
+        <left>240</left>
+        <top>145</top>
+        <width>115</width>
+        <height>40</height>
+        <align>center</align>
+        <aligny>center</aligny>
+        <font>font_flag</font>
+        <textcolor>button_focus</textcolor>
+        <label>$VAR[ds_infoDuration]</label>
+        <scroll>true</scroll>
+        <autoscroll delay="1000" time="1500" repeat="1">true</autoscroll>
+      </control>
+      <!-- Duration BOX image -->
+      <control type="image">
+        <visible>!String.IsEmpty(ListItem.Duration(hh:mm:ss)) | !String.IsEmpty(Window(home).Property(ds_info_duration))</visible>
+        <left>238</left>
+        <top>143</top>
+        <width>119</width>
+        <height>44</height>
+        <aspectratio aligny="top">stretch</aspectratio>
+        <texture colordiffuse="button_focus">flags/flag.png</texture>
+      </control>
+      <!-- Rating -->
+      <control type="label">
+        <left>365</left>
+        <top>145</top>
+        <width>240</width>
+        <height>40</height>
+        <aligny>center</aligny>
+        <font>font_flag</font>
+        <textcolor>button_focus</textcolor>
+        <label>$VAR[ds_infoRating]</label>
+        <scroll>true</scroll>
+        <autoscroll delay="1000" time="1500" repeat="1">true</autoscroll>
+      </control>
+      <!-- Studio -->
+      <control type="label">
+        <left>610</left>
+        <top>145</top>
+        <width>300</width>
+        <height>40</height>
+        <aligny>center</aligny>
+        <font>font_flag</font>
+        <textcolor>button_focus</textcolor>
+        <label>$VAR[ds_infoStudio]</label>
+        <scroll>true</scroll>
+        <autoscroll delay="1000" time="1500" repeat="1">true</autoscroll>
+      </control>
+      <!-- Genre -->
+      <control type="label">
+        <left>100</left>
+        <top>180</top>
+        <width>45%</width>
+        <height>80</height>
+        <font>font_flag</font>
+        <textcolor>button_focus</textcolor>
+        <label>$VAR[ds_infoGenre]</label>
+        <scroll>true</scroll>
+        <autoscroll delay="1000" time="1500" repeat="1">true</autoscroll>
+      </control>
+      <!-- Tagline -->
+      <control type="label">
+        <left>100</left>
+        <top>230</top>
+        <width>45%</width>
+        <height>50</height>
+        <textcolor>selected</textcolor>
+        <label>$VAR[ds_infoTagline]</label>
+        <scroll>true</scroll>
+        <autoscroll delay="1000" time="1500" repeat="1">true</autoscroll>
+      </control>
+      <!-- Plot & Description -->
+      <control type="textbox">
+        <left>100</left>
+        <top>280</top>
+        <width>40%</width>
+        <height>250</height>
+        <label>$VAR[ds_infoDescription]</label>
+        <autoscroll delay="3000" time="3000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
+      </control>
+      <!-- Weather Description -->
+      <control type="textbox">
+        <left>100</left>
+        <top>145</top>
+        <width>40%</width>
+        <height>385</height>
+        <font>font37</font>
+        <label>$VAR[ds_infoWeather]</label>
+        <autoscroll delay="3000" time="3000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
+      </control>
+    </control>
+  </include>
+
+  <include name="HomeBgFades">
+    <definition>
+      <control type="group">
+        <top>0</top>
+        <left>0</left>
+        <width>100%</width>
+        <height>100%</height>
+        <!-- left fade-->
+        <control type="image">
+          <width>100</width>
+          <texture colordiffuse="FF000000">dstv/fade_h.png</texture>
+        </control>
+        <!-- Home overlay background fade -->
+        <control type="image">
+          <visible>!String.IsEqual(Window(home).Property(ds_mainmenu_hidden),true) + Skin.HasSetting(fade_widgets)</visible>
+          <texture colordiffuse="FF000000">colors/white.png</texture>
+          <animation type="Conditional" condition="!String.IsEqual(Window().Property(ds_mainmenu_hidden),true)" reversible="true">
+            <effect type="fade" start="0" end="60" time="180" tween="linear" />
+          </animation>
+        </control>
+        <!-- Menu background fade-->
+        <control type="image">
+          <visible>!String.IsEqual(Window(home).Property(ds_mainmenu_hidden),true)</visible>
+          <width>600</width>
+          <texture colordiffuse="FF000000">dstv/menu_bg_fade.png</texture>
+          <animation type="Conditional" condition="String.IsEqual(Window().Property(ds_mainmenu_hidden),true)" reversible="true">
+            <effect type="fade" start="100" end="0" time="180" tween="linear" />
+          </animation>
+        </control>
+      </control>
+    </definition>
+  </include>
+
+  <include name="HomeMenuLeft">
+    <control type="group" id="999000">
+      <animation type="Conditional" condition="String.IsEqual(Window().Property(ds_mainmenu_hidden),true)" reversible="true">
+        <!-- hide menu when browsing widgets -->
+        <effect type="slide" start="0,0" end="-372,0" time="180" tween="sine" />
+      </animation>
+      <depth>DepthContentPanel</depth>
+      <include>OpenClose_Left</include>
+      <!-- Menu Items List -->
+      <control type="fixedlist" id="9000">
+        <left>0</left>
+        <top>240</top>
+        <width>462</width>
+        <bottom>-10</bottom>
+        <movement>7</movement>
+        <focusposition>0</focusposition>
+        <onfocus>ClearProperty(listposition,home)</onfocus>
+        <onfocus>ClearProperty(ds_mainmenu_hidden)</onfocus>
+        <fadetime>1000</fadetime>
+        <onright>SetFocus(50000)</onright>
+        <onback>SetFocus(50000)</onback>
+        <onup>800</onup>
+        <ondown>SetFocus(9000,0,absolute)</ondown>
+        <scrolltime tween="cubic" easing="out">500</scrolltime>
+        <itemlayout height="95">
+          <!-- icons unselected -->
+          <control type="image">
+            <include>dsa_delayed_menuicon_slideout</include>
+            <left>-10</left>
+            <width>95</width>
+            <height>95</height>
+            <texture colordiffuse="disabled">$INFO[ListItem.icon]</texture>
+          </control>
+          <!-- label unselected -->
+          <control type="label">
+            <left>95</left>
+            <include>dsa_delayed_menulabel_fadeout</include>
+            <aligny>center</aligny>
+            <font>font37</font>
+            <label>$INFO[ListItem.Label]</label>
+            <textcolor>disabled</textcolor>
+          </control>
+        </itemlayout>
+        <focusedlayout height="95">
+          <control type="group">
+            <!-- dark-gray icon bg -->
+            <control type="image">
+              <left>0</left>
+              <top>0</top>
+              <width>95</width>
+              <height>95</height>
+              <texture colordiffuse="51FFFFFF">colors/black.png</texture>
+            </control>
+          </control>
+          <!-- icon focused & selected -->
+          <control type="image">
+            <include>dsa_delayed_menuicon_slideout</include>
+            <left>-10</left>
+            <width>95</width>
+            <height>95</height>
+            <texture colordiffuse="selected">$INFO[ListItem.icon]</texture>
+          </control>
+          <!-- icon Unfocused but Selected -->
+          <control type="image">
+            <include>dsa_delayed_menuicon_slideout</include>
+            <left>-10</left>
+            <width>95</width>
+            <height>95</height>
+            <texture>$INFO[ListItem.icon]</texture>
+            <visible>ControlGroup(800).HasFocus | !ControlGroup(999000).HasFocus</visible>
+          </control>
+          <!-- Focused & Selected -->
+          <control type="label">
+            <left>95</left>
+            <include>dsa_delayed_menulabel_fadeout</include>
+            <aligny>center</aligny>
+            <font>font37</font>
+            <label>$INFO[ListItem.Label]</label>
+            <textcolor>selected</textcolor>
+            <scroll>true</scroll>
+          </control>
+          <!-- UnFocused but Selected -->
+          <control type="label">
+            <left>95</left>
+            <include>dsa_delayed_menulabel_fadeout</include>
+            <aligny>center</aligny>
+            <font>font37</font>
+            <label>$INFO[ListItem.Label]</label>
+            <scroll>true</scroll>
+            <visible>ControlGroup(800).HasFocus | !ControlGroup(999000).HasFocus</visible>
+          </control>
+        </focusedlayout>
+        <content>
+          <include>skinshortcuts-mainmenu</include>
+        </content>
+      </control>
+      <include>HomeTopMenu</include>
+    </control>
+  </include>
+  <include name="HomeTopMenu">
+    <definition>
+      <control type="group">
+        <include>dsa_delayed_menulabel_fadeout</include>
+        <!-- Top Menu buttons (have to be here to keep main menu open) -->
+        <control type="grouplist" id="800">
+          <top>100</top>
+          <width>480</width>
+          <height>110</height>
+          <onback>SetFocus(50000)</onback>
+          <itemgap>0</itemgap>
+          <orientation>horizontal</orientation>
+          <onup>SetFocus(9000,99,absolute)</onup>
+          <ondown>SetFocus(9000,0,absolute)</ondown>
+          <include content="ds_IconButton">
+            <param name="control_id" value="801" />
+            <param name="icon" value="icons/power.png" />
+            <param name="onclick" value="ActivateWindow(shutdownmenu)" />
+            <param name="visible" value="Skin.HasSetting(show_btn_power)" />
+            <param name="onfocus" value="SetProperty(ds_setdesc,Power Menu)" />
+            <param name="onunfocus" value="SetProperty(ds_setdesc,)" />
+          </include>
+          <include content="ds_IconButton">
+            <param name="control_id" value="802" />
+            <param name="icon" value="icons/submenu/add-ons.png" />
+            <param name="onclick" value="ActivateWindow(1100)" />
+            <param name="visible" value="Skin.HasSetting(show_btn_addons)" />
+            <param name="onfocus" value="SetProperty(ds_setdesc,Add-On Browser)" />
+            <param name="onunfocus" value="SetProperty(ds_setdesc,)" />
+          </include>
+          <include content="ds_IconButton">
+            <param name="control_id" value="803" />
+            <param name="icon" value="icons/settings.png" />
+            <param name="onclick" value="ActivateWindow(settings)" />
+            <param name="visible" value="Skin.HasSetting(show_btn_settings)" />
+            <param name="onfocus" value="SetProperty(ds_setdesc,Settings)" />
+            <param name="onunfocus" value="SetProperty(ds_setdesc,)" />
+          </include>
+          <include content="ds_IconButton">
+            <param name="control_id" value="804" />
+            <param name="icon" value="icons/now-playing/fullscreen.png" />
+            <param name="onclick" value="Fullscreen" />
+            <param name="visible" value="Player.HasMedia" />
+            <param name="onfocus" value="SetProperty(ds_setdesc,Toggle Fullscreen)" />
+            <param name="onunfocus" value="SetProperty(ds_setdesc,)" />
+          </include>
+        </control>
+        <control type="label" id="899">
+          <top>200</top>
+          <width>400</width>
+          <height>40</height>
+          <align>center</align>
+          <aligny>center</aligny>
+          <textcolor>disabled</textcolor>
+          <label>$VAR[ds_DescriptionVar]</label>
+        </control>
+      </control>
+    </definition>
+  </include>
+
+  <include name="HomeTopNBottomBars">
+    <definition>
+      <include content="TopBar">
+        <param name="breadcrumbs_label" value="" />
+      </include>
+      <!-- BottomBar (fade) -->
+      <control type="image">
+        <left>0</left>
+        <bottom>0</bottom>
+        <width>100%</width>
+        <height>115</height>
+        <texture colordiffuse="FFFF0000" flipy="true">frame/InfoBar.png</texture>
+      </control>
+    </definition>
+  </include>
+  
+  <include name="HomeMenuLogos">
+    <definition>
+      <control type="group">
+        <depth>DepthBars</depth>
+        <animation effect="slide" end="0,-90" time="300" tween="sine" easing="inout" condition="$EXP[infodialog_active]">conditional</animation>
+        <animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+        <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+        <top>30</top>
+        <left>90</left>
+        <!-- User logo -->
+        <control type="image">
+          <visible>Skin.HasSetting(show_profileavatar)</visible>
+          <bottom>30</bottom>
+          <left>-75</left>
+          <width>60</width>
+          <height>60</height>
+          <animation type="Conditional" condition="String.IsEqual(Window().Property(ds_mainmenu_hidden),true)" reversible="true">
+            <effect type="fade" start="100" end="25" time="250" />
+          </animation>
+          <texture>$INFO[System.ProfileThumb]</texture>
+          <aspectratio>scale</aspectratio>
+        </control>
+        <!-- Kodi logo -->
+        <control type="image">
+          <animation type="Conditional" condition="String.IsEqual(Window().Property(ds_mainmenu_hidden),true)" reversible="true">
+            <effect type="slide" start="0,0" end="-60,0" time="180" tween="sine" />
+            <effect type="fade" start="100" end="50" time="250" />
+          </animation>
+          <aspectratio>keep</aspectratio>
+          <left>-10</left>
+          <width>56</width>
+          <height>56</height>
+          <texture colordiffuse="button_focus">$VAR[ds_kodi_icon]</texture>
+        </control>
+        <!-- DSTV logo -->
+        <control type="image">
+          <include>dsa_delayed_menulabel_fadeout</include>
+          <animation type="Conditional" condition="String.IsEqual(Window().Property(ds_mainmenu_hidden),true)" reversible="true">
+            <effect type="slide" start="0,0" end="-100,0" time="180" tween="sine" />
+          </animation>
+          <left>56</left>
+          <top>-10</top>
+          <aspectratio>keep</aspectratio>
+          <width>225</width>
+          <height>113</height>
+          <texture colordiffuse="button_focus">dstv/dstv_logo.png</texture>
+        </control>
+      </control>
+    </definition>
+  </include>
+  
+	<!-- Widgets -->
+	<include name="ds_widgetPanelList">
+		<!-- internal variables -->
+		<param name="left_offset">100</param>
+		<param name="top_offset">40</param>
+		<param name="width">200</param>
+    <param name="widget_width">210</param>
+		<!-- external variables -->
+		<param name="list_id"/>
+		<param name="widget_header"/>
+		<param name="content_path"/>
+		<param name="sortby"/>
+		<param name="sortorder"/>
+		<param name="limit"/>
+		<param name="widget_target"/>
+		<param name="height"/>
+		<param name="widget_height"/>
+		<param name="aspect_ratio"/>
+		<param name="label_type"/>
+    <param name="w_cond" />
+    <param name="w_hour" />
+    <param name="w_forc" />
+		<definition>
+			<!-- Widget Header -->
+			<control type="label" id="$PARAM[list_id]1">
+				<visible>Skin.HasSetting(show_emptywidgets) | Container($PARAM[list_id]).IsUpdating | Integer.IsGreater(Container($PARAM[list_id]).NumItems,0)</visible>
+        <animation effect="fade" start="100" end="30" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(9000) + !Control.HasFocus($PARAM[list_id])">Conditional</animation>
+				<left>100</left>
+				<top>0</top>
+				<width>100%</width>
+				<height>50</height>
+				<font>widget_label</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<label>$PARAM[widget_header]</label>
+			</control>
+      <!-- Loading pulser -->
+      <control type="label" id="$PARAM[list_id]2">
+        <visible>Container($PARAM[list_id]).IsUpdating + !Integer.IsGreater(Container($PARAM[list_id]).NumItems,1)</visible>
+        <animation effect="fade" start="100" end="0" time="1000" tween="sine" pulse="true" condition="true">Conditional</animation>
+        <left>50%</left>
+        <top>0</top>
+        <width>100%</width>
+        <height>50</height>
+        <font>widget_label</font>
+        <shadowcolor>text_shadow</shadowcolor>
+        <label>Loading..</label>
+      </control>
+			<!-- Widget Panels List -->
+			<control type="fixedlist" id="$PARAM[list_id]">
+        <visible>Container($PARAM[list_id]).IsUpdating | Integer.IsGreater(Container($PARAM[list_id]).NumItems,0)</visible>
+        <animation effect="fade" start="100" end="25" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(9000) + !Control.HasFocus($PARAM[list_id])">Conditional</animation>
+        <animation effect="fade" start="100" end="10" time="250" tween="sine" reversible="true" condition="Control.HasFocus(9000) + !Skin.HasSetting(netflix_bg)">Conditional</animation>
+        <left>0</left>
+        <top>0</top>
+        <right>0</right>
+        <height>$PARAM[widget_height]</height>
+        <onback>9000</onback>
+        <onleft>9000</onleft>
+        <onright>SetFocus($PARAM[list_id],0,absolute)</onright>
+        <onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+        <!-- set widgetpath property for ContextMenu "Browse Widget Folder" option -->
+        <onfocus>SetProperty(ds_prop_widgetpath, $PARAM[content_path], home)</onfocus>
+        <!-- set persistent Info Area data -->
+        <onfocus>ClearProperty(ds_info_title)</onfocus>
+        <onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+        <onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+        <onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+        <onfocus>ClearProperty(ds_info_duration)</onfocus>
+        <onfocus>ClearProperty(ds_info_rating)</onfocus>
+        <onfocus>ClearProperty(ds_info_studio)</onfocus>
+        <onfocus>ClearProperty(ds_info_genre)</onfocus>
+        <onfocus>ClearProperty(ds_info_tagline)</onfocus>
+        <onfocus>ClearProperty(ds_info_desc)</onfocus>
+        <onfocus>ClearProperty(ds_info_weather)</onfocus>
+        <onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+        <onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+        <onunfocus>SetProperty(ds_info_title, "$INFO[Container($PARAM[list_id]).ListItem(0).Label]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_dt_premier, "$INFO[Container($PARAM[list_id]).ListItem(0).Premiered]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_dt_date, "$INFO[Container($PARAM[list_id]).ListItem(0).Date]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_dt_year, "$INFO[Container($PARAM[list_id]).ListItem(0).Year]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_duration, "$INFO[Container($PARAM[list_id]).ListItem(0).Duration(hh:mm:ss)]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_rating, "$INFO[Container($PARAM[list_id]).ListItem(0).RatingAndVotes]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_studio, "$INFO[Container($PARAM[list_id]).ListItem(0).Studio]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_genre, "$INFO[Container($PARAM[list_id]).ListItem(0).Genre]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_tagline, "$INFO[Container($PARAM[list_id]).ListItem(0).Tagline]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_desc, "$INFO[Container($PARAM[list_id]).ListItem(0).Plot]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_weather, "$INFO[Container($PARAM[list_id]).ListItem(0).Property(weather)]", home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_fanart_art, $INFO[Container($PARAM[list_id]).ListItem(0).Art(fanart)], home)</onunfocus>
+        <onunfocus>SetProperty(ds_info_fanart_prop, $INFO[Container($PARAM[list_id]).ListItem(0).Property(fanart)], home)</onunfocus>
+				<!-- Widget Controls -->
+				<scrolltime tween="linear" easing="in">250</scrolltime>
+				<orientation>horizontal</orientation>
+				<preloaditems>2</preloaditems>
+				<focusposition>0</focusposition>
+				<!-- Widget panels layout -->
+				<itemlayout width="$PARAM[widget_width]">
+					<control type="group">
+						<left>$PARAM[left_offset]</left>
+						<top>$PARAM[top_offset]</top>
+						<!-- Background Square -->
+						<control type="image">
+							<width>$PARAM[width]</width>
+							<height>$PARAM[height]</height>
+							<texture colordiffuse="primary_background" background="true">dialogs/dialog-bg-nobo.png</texture>
+						</control>
+						<!-- Icon -->
+						<control type="image">
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+							<width>$PARAM[width]</width>
+							<height>$PARAM[width]</height>
+							<texture fallback="dstv/kodi.png" background="true">$VAR[ds_WidgetPanelIconVar]</texture>
+							<aspectratio>keep</aspectratio>
+						</control>
+						<!-- Poster -->
+						<control type="image">
+							<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+							<width>$PARAM[width]</width>
+							<height>$PARAM[height]</height>
+							<texture fallback="dstv/kodi_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+							<aspectratio>$PARAM[aspect_ratio]</aspectratio>
+						</control>
+						<!-- Label Background Fade -->
+						<control type="image">
+              <visible>Skin.HasSetting(show_widget_titles) | ListItem.Property(weather)</visible>
+							<width>$PARAM[width]</width>
+							<height>$PARAM[height]</height>
+							<texture>dstv/widgets/label_$PARAM[label_type].png</texture>
+              <aspect>stretch</aspect>
+						</control>
+						<!-- Label -->
+						<control type="group">
+              <visible>Skin.HasSetting(show_widget_titles) | ListItem.Property(weather)</visible>
+							<top>$PARAM[height]</top>
+							<control type="label">
+								<top>-34</top>
+								<width>$PARAM[width]</width>
+								<align>center</align>
+								<textoffsetx>7</textoffsetx>
+								<font>font12</font>
+								<textcolor>button_focus</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+						<!-- Weather TopLabel -->
+						<include content="ds_weatherTopLabel"> 
+							<param name="width" value="$PARAM[width]" />
+							<param name="height" value="$PARAM[height]" />
+							<param name="label_type" value="$PARAM[label_type]" />
+						</include>
+						<!-- Watched Status -->
+						<control type="image">
+							<visible>Integer.IsGreater(ListItem.Playcount,0)</visible>
+							<width>75</width>
+							<height>75</height>
+							<texture>dstv/watched.png</texture>
+						</control>
+					</control>
+				</itemlayout>
+				<!-- Focused Widget Panels Layout -->
+				<focusedlayout width="$PARAM[widget_width]">
+					<control type="group">
+						<depth>DepthContentPopout</depth>
+						<animation type="Focus">
+							<effect type="zoom" start="100" end="80" time="150" tween="sine" easing="in" center="200,150" />
+							<effect type="zoom" start="100" end="125" time="150" tween="sine" easing="out" center="200,150" delay="175" />
+						</animation>
+						<left>$PARAM[left_offset]</left>
+						<top>$PARAM[top_offset]</top>
+						<!-- Background Square -->
+						<control type="image">
+							<width>$PARAM[width]</width>
+							<height>$PARAM[height]</height>
+							<texture colordiffuse="primary_background" background="true">dialogs/dialog-bg-nobo.png</texture>
+						</control>
+						<!-- Icon -->
+						<control type="image">
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+							<width>$PARAM[width]</width>
+							<height>$PARAM[width]</height>
+							<texture fallback="dstv/kodi.png" background="true">$VAR[ds_WidgetPanelIconVar]</texture>
+							<aspectratio>keep</aspectratio>
+						</control>
+						<!-- Poster -->
+						<control type="image">
+							<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+							<width>$PARAM[width]</width>
+							<height>$PARAM[height]</height>
+							<texture fallback="dstv/kodi_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+							<aspectratio>$PARAM[aspect_ratio]</aspectratio>
+						</control>
+						<!-- Watched Status -->
+						<control type="image">
+							<visible>Integer.IsGreater(ListItem.Playcount,0)</visible>
+							<width>75</width>
+							<height>75</height>
+							<texture>dstv/watched.png</texture>
+						</control>
+						<!-- Selection Box -->
+						<control type="image">
+              <visible>Control.HasFocus($PARAM[list_id])</visible>
+							<width>$PARAM[width]</width>
+							<height>$PARAM[height]</height>
+							<texture colordiffuse="selected">dstv/widgets/selected_$PARAM[label_type].png</texture>
+              <aspect>stretch</aspect>
+						</control>
+						<!-- Label Background Fade -->
+						<control type="image">
+              <visible>Skin.HasSetting(show_widget_titles) | ListItem.Property(weather)</visible>
+							<width>$PARAM[width]</width>
+							<height>$PARAM[height]</height>
+							<texture>dstv/widgets/label_$PARAM[label_type].png</texture>
+              <aspect>stretch</aspect>
+						</control>
+						<!-- Label -->
+						<control type="group">
+              <visible>Skin.HasSetting(show_widget_titles) | ListItem.Property(weather)</visible>
+							<top>$PARAM[height]</top>
+							<control type="label">
+								<top>-34</top>
+								<width>$PARAM[width]</width>
+								<align>center</align>
+								<textoffsetx>7</textoffsetx>
+								<font>font12</font>
+								<textcolor>selected</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+								<scroll>true</scroll>
+								<autoscroll time="2000" delay="500" repeat="0">true</autoscroll>
+							</control>
+						</control>
+						<!-- Weather TopLabel -->
+						<include content="ds_weatherTopLabel"> 
+							<param name="width" value="$PARAM[width]" />
+							<param name="height" value="$PARAM[height]" />
+							<param name="label_type" value="$PARAM[label_type]" />
+						</include>
+					</control>
+				</focusedlayout>
+				<content>
+					<item>
+						<visible>Container($PARAM[list_id]).IsUpdating + Integer.IsLessOrEqual(Container($PARAM[list_id]).NumItems,2)</visible>
+						<label>Loading...</label>
+						<icon>dstv/widgets/loading.gif</icon>
+					</item>
+					<item>
+						<visible>Skin.HasSetting(show_emptywidgets) + !Skin.HasSetting(show_browsewidget) + !Container($PARAM[list_id]).IsUpdating + !String.IsEmpty(Control.GetLabel($PARAM[list_id]1)) + Integer.IsLessOrEqual(Container($PARAM[list_id]).NumItems,1)</visible>
+						<label>No Content</label>
+						<icon>dstv/widgets/empty.png</icon>
+					</item>
+					<item>
+						<visible>Skin.HasSetting(show_browsewidget) + Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) + !Container($PARAM[list_id]).IsUpdating</visible>
+						<label>Browse Widget</label>
+						<onclick>ActivateWindow(Videos,"$PARAM[content_path]",return)</onclick>
+						<icon>dstv/kodi.png</icon>
+					</item>
+				</content>
+				<include content="ds_weather-conditions"> 
+					<param name="visible" value="$PARAM[w_cond]" />
+				</include>
+				<include content="ds_weather-hourly"> 
+					<param name="visible" value="$PARAM[w_hour]" />
+				</include>
+				<include content="ds_weather-forecast"> 
+					<param name="visible" value="$PARAM[w_forc]" />
+				</include>
+				<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[limit]">$PARAM[content_path]</content>
+			</control>
+		</definition>
+	</include>
+	
+	<!-- Weather Widget -->
+	<include name="ds_weather-conditions">
+    <param name="visible"></param>
+    <definition>
+		  <content>
+			  <item>
+				  <visible>$PARAM[visible] + String.IsEmpty(Weather.plugin)</visible>
+				  <label>Setup Weather</label>
+				  <icon>dstv/weather/coloured/na.png</icon>
+				  <property name="fanart">dstv/weather/fanart/na.jpg</property>
+				  <property name="weather">No Weather add-on setup.[CR]Press OK to select one.</property>
+				  <onclick>ActivateWindow(servicesettings,weather)</onclick>
+			  </item>
+			  <include content="ds_weatherItem-Condition">
+				  <param name="visible" value="$PARAM[visible]" />
+				  <param name="label" value="$INFO[Weather.Conditions,, ∙ ]$INFO[Weather.Temperature]" />
+				  <param name="icon" value="$INFO[Weather.FanartCode,dstv/weather/coloured/,.png]" />
+			  </include>
+			  <include content="ds_weatherItem-Condition">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="label" value="Wind $INFO[Window(weather).Property(Current.Wind)]" />
+				  <param name="icon" value="dstv/weather/icons/wind.png" />
+			  </include>
+			  <include content="ds_weatherItem-Condition">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="label" value="Humidity $INFO[Window(weather).Property(Current.Humidity)]" />
+				  <param name="icon" value="dstv/weather/icons/humidity.png" />
+			  </include>
+			  <include content="ds_weatherItem-Condition">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="label" value="Rain $INFO[Window(weather).Property(Current.Precipitation)]" />
+				  <param name="icon" value="dstv/weather/icons/rain.png" />
+			  </include>
+			  <include content="ds_weatherItem-Condition">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="label" value="Sunrise $INFO[Window(weather).Property(Today.Sunrise)]" />
+				  <param name="icon" value="dstv/weather/icons/sunrise.png" />
+			  </include>
+			  <include content="ds_weatherItem-Condition">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="label" value="Sunset $INFO[Window(weather).Property(Today.Sunset)]" />
+				  <param name="icon" value="dstv/weather/icons/sunset.png" />
+			  </include>
+		  </content>
+    </definition>
+	</include>
+	<include name="ds_weather-hourly">
+    <param name="visible"></param>
+    <param name="path"></param>
+    <param name="list_id"></param>
+    <definition>
+		  <content>
+			  <item>
+				  <visible>String.IsEqual($PARAM[path],ds_weather-hourly) + !String.IsEmpty(Weather.plugin) + String.IsEmpty(Window(weather).Property(Hourly.IsFetched))</visible>
+				  <label></label>
+				  <icon>dstv/weather/coloured/na.png</icon>
+				  <property name="fanart">dstv/weather/fanart/na.jpg</property>
+				  <property name="weather">Weather not fetched, please wait.</property>
+			  </item>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="1" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="2" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="3" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="4" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="5" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="6" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="7" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="8" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="9" />
+			  </include>
+			  <include content="ds_weatherItem-Hourly">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="10" />
+			  </include>
+		  </content>
+    </definition>
+	</include>
+	<include name="ds_weather-forecast">
+    <param name="visible"></param>
+    <param name="path"></param>
+    <param name="list_id"></param>
+    <definition>
+		  <content>
+			  <item>
+          <visible>String.IsEqual($PARAM[path],ds_weather-forecast) + !String.IsEmpty(Weather.Plugin) + Window(weather).Property(Daily.IsFetched)</visible>
+				  <label></label>
+				  <icon>dstv/weather/coloured/na.png</icon>
+				  <property name="fanart">dstv/weather/fanart/na.jpg</property>
+				  <property name="weather">Weather not fetched, please wait.</property>
+			  </item>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="1" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="2" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="3" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="4" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="5" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="6" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="7" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="8" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="9" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="10" />
+			  </include>
+			  <include content="ds_weatherItem-Daily">
+          <param name="visible" value="$PARAM[visible]" />
+				  <param name="item_index" value="11" />
+			  </include>
+		  </content>
+    </definition>
+	</include>
+	
+  <include name="ds_weatherTopLabel">
+    <definition>
+		  <control type="group">
+			  <visible>!String.IsEmpty(ListItem.Property(toplabel))</visible>
+			  <control type="image">
+				  <width>$PARAM[width]</width>
+				  <height>$PARAM[height]</height>
+				  <texture flipy="true">dstv/widgets/label_$PARAM[label_type].png</texture>
+			  </control>
+			  <control type="label">
+				  <width>$PARAM[width]</width>
+				  <align>center</align>
+				  <textoffsetx>7</textoffsetx>
+				  <font>font12</font>
+				  <label>$INFO[ListItem.Property(toplabel)]</label>
+			  </control>
+		  </control>
+    </definition>
+	</include>
+	
+  <include name="ds_weatherItem-Condition">
+    <param name="visible">false</param>
+    <param name="label"></param>
+    <param name="icon"></param>
+    <definition>
+		  <item>
+			  <visible>$PARAM[visible] + !String.IsEmpty(Weather.Plugin)</visible>
+			  <label>$PARAM[label]</label>
+			  <icon>$PARAM[icon]</icon>
+			  <property name="fanart">$INFO[Weather.FanartCode,dstv/weather/fanart/,.jpg]</property>
+			  <property name="weather">$INFO[Weather.Conditions,, ∙ ]$INFO[Weather.Temperature,,[CR]]$INFO[Window(weather).Property(Daily.1.HighTemperature),[COLOR button_focus]High: [/COLOR][COLOR red],[/COLOR]][COLOR button_focus], [/COLOR]$INFO[Window(weather).Property(Daily.1.LowTemperature),[COLOR button_focus]Low: [/COLOR][COLOR blue],[/COLOR][CR]]$INFO[Window(weather).Property(Current.Wind),[COLOR button_focus]Wind: [/COLOR],[CR]]$INFO[Window(weather).Property(Current.Humidity),[COLOR button_focus]Humidity: [/COLOR],[CR]]$INFO[Window(weather).Property(Current.Precipitation),[COLOR button_focus]Percipitation: [/COLOR],[CR]]$INFO[Window(weather).Property(Today.Sunrise),[COLOR button_focus]Sunrise: [/COLOR],[CR]]$INFO[Window(weather).Property(Today.Sunset),[COLOR button_focus]Sunset: [/COLOR]]</property>
+		  </item>
+    </definition>
+	</include>
+	<include name="ds_weatherItem-Hourly">
+    <param name="visible">false</param>
+		<param name="item_index"/>
+		<definition>
+			<item>
+				<visible>$PARAM[visible] + !String.IsEmpty(Weather.Plugin) + !String.IsEmpty(Window(weather).Property(Hourly.$PARAM[item_index].Time))</visible>
+				<label>$INFO[Window(weather).Property(Hourly.$PARAM[item_index].Time)]</label>
+				<icon>resource://resource.images.weathericons.default/$INFO[Window(weather).Property(Hourly.$PARAM[item_index].OutlookIcon)]</icon>
+				<property name="toplabel">$INFO[Window(weather).Property(Hourly.$PARAM[item_index].Temperature)]  ∙  $INFO[Window(weather).Property(Hourly.$PARAM[item_index].Precipitation)]</property>
+				<property name="fanart">$INFO[Window(weather).Property(Hourly.$PARAM[item_index].FanartCode),dstv/weather/fanart/,.jpg]</property>
+				<property name="weather">$INFO[Window(weather).Property(Hourly.$PARAM[item_index].ShortDate),,[CR]]$INFO[Window(weather).Property(Hourly.$PARAM[item_index].Temperature),[COLOR button_focus]Temperature: [/COLOR],[CR]]$INFO[Window(weather).Property(Hourly.$PARAM[item_index].Precipitation),[COLOR button_focus]Percipitation: [/COLOR],[CR]]$INFO[Window(weather).Property(Hourly.$PARAM[item_index].Cloudiness),[COLOR button_focus]Cloudiness: [/COLOR],[CR]]$INFO[Window(weather).Property(Hourly.$PARAM[item_index].Outlook),[COLOR button_focus]Outlook: [/COLOR]]</property>
+				<onclick>noop</onclick>
+			</item>
+		</definition>
+	</include>
+	<include name="ds_weatherItem-Daily">
+    <param name="visible">false</param>
+		<param name="item_index"/>
+		<definition>
+			<item>
+				<visible>$PARAM[visible] + !String.IsEmpty(Weather.Plugin) + !String.IsEmpty(Window(weather).Property(Daily.$PARAM[item_index].ShortDay))</visible>
+				<label>$INFO[Window(weather).Property(Daily.$PARAM[item_index].ShortDay)]</label>
+				<icon>resource://resource.images.weathericons.default/$INFO[Window(weather).Property(Daily.$PARAM[item_index].OutlookIcon)]</icon>
+				<property name="toplabel">[COLOR red]$INFO[Window(weather).Property(Daily.$PARAM[item_index].HighTemperature)][/COLOR]     [COLOR blue]$INFO[Window(weather).Property(Daily.$PARAM[item_index].LowTemperature)][/COLOR]</property>
+				<property name="fanart">$INFO[Window(weather).Property(Daily.$PARAM[item_index].FanartCode),dstv/weather/fanart/,.jpg]</property>
+				<property name="weather">$INFO[Window(weather).Property(Daily.$PARAM[item_index].LongDay)] $INFO[Window(weather).Property(Daily.$PARAM[item_index].ShortDate),,[CR]]$INFO[Window(weather).Property(Daily.$PARAM[item_index].HighTemperature),[COLOR button_focus]Temp.High: [/COLOR][COLOR red],[/COLOR][CR]]$INFO[Window(weather).Property(Daily.$PARAM[item_index].LowTemperature),[COLOR button_focus]Temp.Low: [/COLOR][COLOR blue],[/COLOR][CR]]$INFO[Window(weather).Property(Daily.$PARAM[item_index].TempDay),[COLOR button_focus]Temp.Avg.: [/COLOR],[CR]]$INFO[Window(weather).Property(Daily.$PARAM[item_index].Cloudiness),[COLOR button_focus]Cloudiness: [/COLOR],[CR]]$INFO[Window(weather).Property(Daily.$PARAM[item_index].Outlook),[COLOR button_focus]Outlook: [/COLOR]]</property>
+				<onclick>noop</onclick>
+			</item>
+		</definition>
+	</include>
+</includes>

@@ -1,0 +1,1246 @@
+<includes>
+	<include name="skinshortcuts-mainmenu">
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<label>Favourites</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/favourites.png</thumb>
+			<onclick>noop</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">favourites</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">True</property>
+			</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<label>SC Nove Filmy</label>
+			<label2>Custom item</label2>
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/- none.png</thumb>
+			<onclick>ActivateWindow(Videos,"plugin://plugin.video.stream-cinema/?url=2f464d6f766965732f6c6174657374",return)</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">scnovefilmy</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">False</property>
+			</item>
+		<item id="3">
+			<property name="id">$NUMBER[3]</property>
+			<label>Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/movies.png</thumb>
+			<onclick>noop</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">movies</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">True</property>
+			</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<label>TV Shows</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/tv.png</thumb>
+			<onclick>noop</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">tvshows</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">True</property>
+			</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<label>My Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/mymovies.png</thumb>
+			<onclick>noop</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">mymovies</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">True</property>
+			</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<label>My TV Shows</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/mytv.png</thumb>
+			<onclick>noop</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">mytvshows</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">True</property>
+			</item>
+		<item id="7">
+			<property name="id">$NUMBER[7]</property>
+			<label>Search</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/search.png</thumb>
+			<onclick>noop</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">search</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">True</property>
+			</item>
+		<item id="8">
+			<property name="id">$NUMBER[8]</property>
+			<label>Weather</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb>special://skin/extras/icons/weather.png</thumb>
+			<onclick>noop</onclick>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="submenuVisibility">weather</property>
+			<property name="myCustomProperty">foo</property>
+			<property name="hasSubmenu">True</property>
+			</item>
+		</include>
+	<include />
+	<include name="skinshortcuts-submenu">
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<property name="mainmenuid">1</property>
+			<label>My Favourites</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">favourites://</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),favourites)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<property name="mainmenuid">1</property>
+			<label>Android Apps</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">androidapp://sources/apps/</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),favourites)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<property name="mainmenuid">3</property>
+			<label>In Theatres</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<property name="widgetSortBy">year</property>
+			<property name="widgetSortOrder">descending</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),movies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<property name="mainmenuid">3</property>
+			<label>New Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<property name="widgetSortBy">year</property>
+			<property name="widgetSortOrder">descending</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),movies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="3">
+			<property name="id">$NUMBER[3]</property>
+			<property name="mainmenuid">3</property>
+			<label>Trending Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),movies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<property name="mainmenuid">3</property>
+			<label>Popular Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),movies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<property name="mainmenuid">3</property>
+			<label>Movie Genres</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),movies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<property name="mainmenuid">4</property>
+			<label>New TV Shows</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),tvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<property name="mainmenuid">4</property>
+			<label>Returning TV Shows</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),tvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="3">
+			<property name="id">$NUMBER[3]</property>
+			<property name="mainmenuid">4</property>
+			<label>Trending TV Shows</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),tvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<property name="mainmenuid">4</property>
+			<label>Shows Airing Today</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),tvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<property name="mainmenuid">4</property>
+			<label>TV Genres</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),tvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<property name="mainmenuid">4</property>
+			<label>TV Networks</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">plugin://plugin.video</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),tvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<property name="mainmenuid">5</property>
+			<label>Movies In Progress</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">special://skin/playlists/movies_inprogress.xsp</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mymovies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<property name="mainmenuid">5</property>
+			<label>Recently Added Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">special://skin/playlists/movies_recent_unwatched.xsp</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mymovies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="3">
+			<property name="id">$NUMBER[3]</property>
+			<property name="mainmenuid">5</property>
+			<label>Unwatched Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">special://skin/playlists/movies_unwatched.xsp</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mymovies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<property name="mainmenuid">5</property>
+			<label>Random Movies</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">special://skin/playlists/movies_random.xsp</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mymovies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<property name="mainmenuid">5</property>
+			<label>Movies By Genre</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">videodb://movies/genres/</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mymovies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<property name="mainmenuid">5</property>
+			<label>Movies By Year</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">videodb://movies/years/</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mymovies)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<property name="mainmenuid">6</property>
+			<label>Unwatched Episodes</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">special://skin/playlists/tvshows_unwatched_episodes.xsp</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mytvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<property name="mainmenuid">6</property>
+			<label>Shows In Progress</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">special://skin/playlists/tvshows_inprogress.xsp</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mytvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="3">
+			<property name="id">$NUMBER[3]</property>
+			<property name="mainmenuid">6</property>
+			<label>Unwatched Shows</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">special://skin/playlists/tvshows_unwatched.xsp</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mytvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<property name="mainmenuid">6</property>
+			<label>Shows By Genre</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">videodb://tvshows/genres/</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mytvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<property name="mainmenuid">6</property>
+			<label>Shows By Year</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">videodb://tvshows/years/</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mytvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<property name="mainmenuid">6</property>
+			<label>Shows By Studio</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">videodb://tvshows/studios/</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mytvshows)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<property name="mainmenuid">7</property>
+			<label>Search Tempest</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),search)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="1">
+			<property name="id">$NUMBER[1]</property>
+			<property name="mainmenuid">8</property>
+			<label>Conditions</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">ds_weather-conditions</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),weather)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="2">
+			<property name="id">$NUMBER[2]</property>
+			<property name="mainmenuid">8</property>
+			<label>Forecast</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">ds_weather-forecast</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),weather)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		<item id="3">
+			<property name="id">$NUMBER[3]</property>
+			<property name="mainmenuid">8</property>
+			<label>Hourly</label>
+			<label2 />
+			<icon>DefaultShortcut.png</icon>
+			<thumb />
+			<property name="widgetPath">ds_weather-hourly</property>
+			<property name="displaySquares">true</property>
+			<onclick>noop</onclick>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),weather)</visible>
+			<property name="isSubmenu">True</property>
+			</item>
+		</include>
+	<include name="skinshortcuts-template-ss_widgets">
+		<include condition="String.IsEqual(System.ProfileName,Master user)">skinshortcuts-template-ss_widgets-Master user</include>
+		</include>
+	<include name="skinshortcuts-template-ss_widgets-Master user">
+		<control type="grouplist" id="50000">
+			<visible>String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),favourites)</visible>
+			<left>10</left>
+			<top>51%</top>
+			<width>100%</width>
+			<height>49%</height>
+			<scrolltime tween="linear" easing="in">250</scrolltime>
+			<orientation>vertical</orientation>
+			<itemgap>-40</itemgap>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50101" />
+				<param name="widget_header" value="My Favourites" />
+				<param name="content_path" value="favourites://" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50102" />
+				<param name="widget_header" value="Android Apps" />
+				<param name="content_path" value="androidapp://sources/apps/" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<control type="button" id="59999">
+				<visible>Integer.IsLess(Container(50000).NumItems,2)</visible>
+				<animation effect="fade" start="100" end="0" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(59999)">Conditional</animation>
+				<left>400</left>
+				<right>400</right>
+				<height>150</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>This menu item has no widgets or the widgets have no content.[CR]Press OK to edit your Main Menu widgets.[CR](Or hold BACK and select Skin Settings from the popup menu)</label>
+				<wrapmultiline>true</wrapmultiline>
+				<onup>50000</onup>
+				<ondown>50000</ondown>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onback>9000</onback>
+				<onclick>ActivateWindowAndFocus(skinsettings,9000,1,8201,0)</onclick>
+				<onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+				<onfocus>ClearProperty(ds_info_title)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+				<onfocus>ClearProperty(ds_info_duration)</onfocus>
+				<onfocus>ClearProperty(ds_info_rating)</onfocus>
+				<onfocus>ClearProperty(ds_info_studio)</onfocus>
+				<onfocus>ClearProperty(ds_info_genre)</onfocus>
+				<onfocus>ClearProperty(ds_info_tagline)</onfocus>
+				<onfocus>ClearProperty(ds_info_desc)</onfocus>
+				<onfocus>ClearProperty(ds_info_weather)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+				<texturefocus colordiffuse="selected">dstv/test_small.png</texturefocus>
+				<texturenofocus colordiffuse="disabled">dstv/test_small.png</texturenofocus>
+				</control>
+			</control>
+		<control type="grouplist" id="50000">
+			<visible>String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),movies)</visible>
+			<left>10</left>
+			<top>51%</top>
+			<width>100%</width>
+			<height>49%</height>
+			<scrolltime tween="linear" easing="in">250</scrolltime>
+			<orientation>vertical</orientation>
+			<itemgap>-40</itemgap>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50301" />
+				<param name="widget_header" value="In Theatres" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="year" />
+				<param name="sortorder" value="descending" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50302" />
+				<param name="widget_header" value="New Movies" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="year" />
+				<param name="sortorder" value="descending" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50303" />
+				<param name="widget_header" value="Trending Movies" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50304" />
+				<param name="widget_header" value="Popular Movies" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50305" />
+				<param name="widget_header" value="Movie Genres" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<control type="button" id="59999">
+				<visible>Integer.IsLess(Container(50000).NumItems,2)</visible>
+				<animation effect="fade" start="100" end="0" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(59999)">Conditional</animation>
+				<left>400</left>
+				<right>400</right>
+				<height>150</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>This menu item has no widgets or the widgets have no content.[CR]Press OK to edit your Main Menu widgets.[CR](Or hold BACK and select Skin Settings from the popup menu)</label>
+				<wrapmultiline>true</wrapmultiline>
+				<onup>50000</onup>
+				<ondown>50000</ondown>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onback>9000</onback>
+				<onclick>ActivateWindowAndFocus(skinsettings,9000,1,8201,0)</onclick>
+				<onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+				<onfocus>ClearProperty(ds_info_title)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+				<onfocus>ClearProperty(ds_info_duration)</onfocus>
+				<onfocus>ClearProperty(ds_info_rating)</onfocus>
+				<onfocus>ClearProperty(ds_info_studio)</onfocus>
+				<onfocus>ClearProperty(ds_info_genre)</onfocus>
+				<onfocus>ClearProperty(ds_info_tagline)</onfocus>
+				<onfocus>ClearProperty(ds_info_desc)</onfocus>
+				<onfocus>ClearProperty(ds_info_weather)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+				<texturefocus colordiffuse="selected">dstv/test_small.png</texturefocus>
+				<texturenofocus colordiffuse="disabled">dstv/test_small.png</texturenofocus>
+				</control>
+			</control>
+		<control type="grouplist" id="50000">
+			<visible>String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),tvshows)</visible>
+			<left>10</left>
+			<top>51%</top>
+			<width>100%</width>
+			<height>49%</height>
+			<scrolltime tween="linear" easing="in">250</scrolltime>
+			<orientation>vertical</orientation>
+			<itemgap>-40</itemgap>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50401" />
+				<param name="widget_header" value="New TV Shows" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50402" />
+				<param name="widget_header" value="Returning TV Shows" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50403" />
+				<param name="widget_header" value="Trending TV Shows" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50404" />
+				<param name="widget_header" value="Shows Airing Today" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50405" />
+				<param name="widget_header" value="TV Genres" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50406" />
+				<param name="widget_header" value="TV Networks" />
+				<param name="content_path" value="plugin://plugin.video" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<control type="button" id="59999">
+				<visible>Integer.IsLess(Container(50000).NumItems,2)</visible>
+				<animation effect="fade" start="100" end="0" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(59999)">Conditional</animation>
+				<left>400</left>
+				<right>400</right>
+				<height>150</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>This menu item has no widgets or the widgets have no content.[CR]Press OK to edit your Main Menu widgets.[CR](Or hold BACK and select Skin Settings from the popup menu)</label>
+				<wrapmultiline>true</wrapmultiline>
+				<onup>50000</onup>
+				<ondown>50000</ondown>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onback>9000</onback>
+				<onclick>ActivateWindowAndFocus(skinsettings,9000,1,8201,0)</onclick>
+				<onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+				<onfocus>ClearProperty(ds_info_title)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+				<onfocus>ClearProperty(ds_info_duration)</onfocus>
+				<onfocus>ClearProperty(ds_info_rating)</onfocus>
+				<onfocus>ClearProperty(ds_info_studio)</onfocus>
+				<onfocus>ClearProperty(ds_info_genre)</onfocus>
+				<onfocus>ClearProperty(ds_info_tagline)</onfocus>
+				<onfocus>ClearProperty(ds_info_desc)</onfocus>
+				<onfocus>ClearProperty(ds_info_weather)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+				<texturefocus colordiffuse="selected">dstv/test_small.png</texturefocus>
+				<texturenofocus colordiffuse="disabled">dstv/test_small.png</texturenofocus>
+				</control>
+			</control>
+		<control type="grouplist" id="50000">
+			<visible>String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mymovies)</visible>
+			<left>10</left>
+			<top>51%</top>
+			<width>100%</width>
+			<height>49%</height>
+			<scrolltime tween="linear" easing="in">250</scrolltime>
+			<orientation>vertical</orientation>
+			<itemgap>-40</itemgap>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50501" />
+				<param name="widget_header" value="Movies In Progress" />
+				<param name="content_path" value="special://skin/playlists/movies_inprogress.xsp" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50502" />
+				<param name="widget_header" value="Recently Added Movies" />
+				<param name="content_path" value="special://skin/playlists/movies_recent_unwatched.xsp" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50503" />
+				<param name="widget_header" value="Unwatched Movies" />
+				<param name="content_path" value="special://skin/playlists/movies_unwatched.xsp" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50504" />
+				<param name="widget_header" value="Random Movies" />
+				<param name="content_path" value="special://skin/playlists/movies_random.xsp" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50505" />
+				<param name="widget_header" value="Movies By Genre" />
+				<param name="content_path" value="videodb://movies/genres/" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50506" />
+				<param name="widget_header" value="Movies By Year" />
+				<param name="content_path" value="videodb://movies/years/" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<control type="button" id="59999">
+				<visible>Integer.IsLess(Container(50000).NumItems,2)</visible>
+				<animation effect="fade" start="100" end="0" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(59999)">Conditional</animation>
+				<left>400</left>
+				<right>400</right>
+				<height>150</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>This menu item has no widgets or the widgets have no content.[CR]Press OK to edit your Main Menu widgets.[CR](Or hold BACK and select Skin Settings from the popup menu)</label>
+				<wrapmultiline>true</wrapmultiline>
+				<onup>50000</onup>
+				<ondown>50000</ondown>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onback>9000</onback>
+				<onclick>ActivateWindowAndFocus(skinsettings,9000,1,8201,0)</onclick>
+				<onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+				<onfocus>ClearProperty(ds_info_title)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+				<onfocus>ClearProperty(ds_info_duration)</onfocus>
+				<onfocus>ClearProperty(ds_info_rating)</onfocus>
+				<onfocus>ClearProperty(ds_info_studio)</onfocus>
+				<onfocus>ClearProperty(ds_info_genre)</onfocus>
+				<onfocus>ClearProperty(ds_info_tagline)</onfocus>
+				<onfocus>ClearProperty(ds_info_desc)</onfocus>
+				<onfocus>ClearProperty(ds_info_weather)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+				<texturefocus colordiffuse="selected">dstv/test_small.png</texturefocus>
+				<texturenofocus colordiffuse="disabled">dstv/test_small.png</texturenofocus>
+				</control>
+			</control>
+		<control type="grouplist" id="50000">
+			<visible>String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),mytvshows)</visible>
+			<left>10</left>
+			<top>51%</top>
+			<width>100%</width>
+			<height>49%</height>
+			<scrolltime tween="linear" easing="in">250</scrolltime>
+			<orientation>vertical</orientation>
+			<itemgap>-40</itemgap>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50601" />
+				<param name="widget_header" value="Unwatched Episodes" />
+				<param name="content_path" value="special://skin/playlists/tvshows_unwatched_episodes.xsp" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50602" />
+				<param name="widget_header" value="Shows In Progress" />
+				<param name="content_path" value="special://skin/playlists/tvshows_inprogress.xsp" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50603" />
+				<param name="widget_header" value="Unwatched Shows" />
+				<param name="content_path" value="special://skin/playlists/tvshows_unwatched.xsp" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="300" />
+				<param name="widget_height" value="400" />
+				<param name="aspect_ratio" value="stretch" />
+				<param name="label_type" value="poster" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50604" />
+				<param name="widget_header" value="Shows By Genre" />
+				<param name="content_path" value="videodb://tvshows/genres/" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50605" />
+				<param name="widget_header" value="Shows By Year" />
+				<param name="content_path" value="videodb://tvshows/years/" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50606" />
+				<param name="widget_header" value="Shows By Studio" />
+				<param name="content_path" value="videodb://tvshows/studios/" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<control type="button" id="59999">
+				<visible>Integer.IsLess(Container(50000).NumItems,2)</visible>
+				<animation effect="fade" start="100" end="0" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(59999)">Conditional</animation>
+				<left>400</left>
+				<right>400</right>
+				<height>150</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>This menu item has no widgets or the widgets have no content.[CR]Press OK to edit your Main Menu widgets.[CR](Or hold BACK and select Skin Settings from the popup menu)</label>
+				<wrapmultiline>true</wrapmultiline>
+				<onup>50000</onup>
+				<ondown>50000</ondown>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onback>9000</onback>
+				<onclick>ActivateWindowAndFocus(skinsettings,9000,1,8201,0)</onclick>
+				<onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+				<onfocus>ClearProperty(ds_info_title)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+				<onfocus>ClearProperty(ds_info_duration)</onfocus>
+				<onfocus>ClearProperty(ds_info_rating)</onfocus>
+				<onfocus>ClearProperty(ds_info_studio)</onfocus>
+				<onfocus>ClearProperty(ds_info_genre)</onfocus>
+				<onfocus>ClearProperty(ds_info_tagline)</onfocus>
+				<onfocus>ClearProperty(ds_info_desc)</onfocus>
+				<onfocus>ClearProperty(ds_info_weather)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+				<texturefocus colordiffuse="selected">dstv/test_small.png</texturefocus>
+				<texturenofocus colordiffuse="disabled">dstv/test_small.png</texturenofocus>
+				</control>
+			</control>
+		<control type="grouplist" id="50000">
+			<visible>String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),search)</visible>
+			<left>10</left>
+			<top>51%</top>
+			<width>100%</width>
+			<height>49%</height>
+			<scrolltime tween="linear" easing="in">250</scrolltime>
+			<orientation>vertical</orientation>
+			<itemgap>-40</itemgap>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50701" />
+				<param name="widget_header" value="Search Tempest" />
+				<param name="content_path" value="" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<control type="button" id="59999">
+				<visible>Integer.IsLess(Container(50000).NumItems,2)</visible>
+				<animation effect="fade" start="100" end="0" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(59999)">Conditional</animation>
+				<left>400</left>
+				<right>400</right>
+				<height>150</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>This menu item has no widgets or the widgets have no content.[CR]Press OK to edit your Main Menu widgets.[CR](Or hold BACK and select Skin Settings from the popup menu)</label>
+				<wrapmultiline>true</wrapmultiline>
+				<onup>50000</onup>
+				<ondown>50000</ondown>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onback>9000</onback>
+				<onclick>ActivateWindowAndFocus(skinsettings,9000,1,8201,0)</onclick>
+				<onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+				<onfocus>ClearProperty(ds_info_title)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+				<onfocus>ClearProperty(ds_info_duration)</onfocus>
+				<onfocus>ClearProperty(ds_info_rating)</onfocus>
+				<onfocus>ClearProperty(ds_info_studio)</onfocus>
+				<onfocus>ClearProperty(ds_info_genre)</onfocus>
+				<onfocus>ClearProperty(ds_info_tagline)</onfocus>
+				<onfocus>ClearProperty(ds_info_desc)</onfocus>
+				<onfocus>ClearProperty(ds_info_weather)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+				<texturefocus colordiffuse="selected">dstv/test_small.png</texturefocus>
+				<texturenofocus colordiffuse="disabled">dstv/test_small.png</texturenofocus>
+				</control>
+			</control>
+		<control type="grouplist" id="50000">
+			<visible>String.IsEqual(Container(9000).ListItem.Property(submenuVisibility),weather)</visible>
+			<left>10</left>
+			<top>51%</top>
+			<width>100%</width>
+			<height>49%</height>
+			<scrolltime tween="linear" easing="in">250</scrolltime>
+			<orientation>vertical</orientation>
+			<itemgap>-40</itemgap>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50801" />
+				<param name="widget_header" value="Conditions" />
+				<param name="content_path" value="ds_weather-conditions" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="true" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="false" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50802" />
+				<param name="widget_header" value="Forecast" />
+				<param name="content_path" value="ds_weather-forecast" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="false" />
+				<param name="w_forc" value="true" />
+				</include>
+			<include content="ds_widgetPanelList">
+				<param name="list_id" value="50803" />
+				<param name="widget_header" value="Hourly" />
+				<param name="content_path" value="ds_weather-hourly" />
+				<param name="sortby" value="" />
+				<param name="sortorder" value="" />
+				<param name="limit" value="" />
+				<param name="widget_target" value="" />
+				<param name="height" value="200" />
+				<param name="widget_height" value="300" />
+				<param name="aspect_ratio" value="scale" />
+				<param name="label_type" value="square" />
+				<param name="w_cond" value="false" />
+				<param name="w_hour" value="true" />
+				<param name="w_forc" value="false" />
+				</include>
+			<control type="button" id="59999">
+				<visible>Integer.IsLess(Container(50000).NumItems,2)</visible>
+				<animation effect="fade" start="100" end="0" time="250" tween="sine" reversible="true" condition="!Control.HasFocus(59999)">Conditional</animation>
+				<left>400</left>
+				<right>400</right>
+				<height>150</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>This menu item has no widgets or the widgets have no content.[CR]Press OK to edit your Main Menu widgets.[CR](Or hold BACK and select Skin Settings from the popup menu)</label>
+				<wrapmultiline>true</wrapmultiline>
+				<onup>50000</onup>
+				<ondown>50000</ondown>
+				<onleft>9000</onleft>
+				<onright>9000</onright>
+				<onback>9000</onback>
+				<onclick>ActivateWindowAndFocus(skinsettings,9000,1,8201,0)</onclick>
+				<onfocus>SetProperty(ds_mainmenu_hidden,true,home)</onfocus>
+				<onfocus>ClearProperty(ds_info_title)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_premier)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_date)</onfocus>
+				<onfocus>ClearProperty(ds_info_dt_year)</onfocus>
+				<onfocus>ClearProperty(ds_info_duration)</onfocus>
+				<onfocus>ClearProperty(ds_info_rating)</onfocus>
+				<onfocus>ClearProperty(ds_info_studio)</onfocus>
+				<onfocus>ClearProperty(ds_info_genre)</onfocus>
+				<onfocus>ClearProperty(ds_info_tagline)</onfocus>
+				<onfocus>ClearProperty(ds_info_desc)</onfocus>
+				<onfocus>ClearProperty(ds_info_weather)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_art)</onfocus>
+				<onfocus>ClearProperty(ds_info_fanart_prop)</onfocus>
+				<texturefocus colordiffuse="selected">dstv/test_small.png</texturefocus>
+				<texturenofocus colordiffuse="disabled">dstv/test_small.png</texturenofocus>
+				</control>
+			</control>
+		</include>
+	</includes>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<include>ds_customsettings</include>
+	<defaultcontrol>50000</defaultcontrol>
+	<onload condition="!Skin.HasSetting(ds-1strun-done)">ReplaceWindow(1130)</onload>
+  <onload condition="System.HasAddon(script.skinshortcuts)">RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;options=noGroups)</onload>
+	<onunload>ClearProperty(ds_prop_widgetpath, home)</onunload>
+	<backgroundcolor>background</backgroundcolor>
+	<controls>
+		<include>DefaultBackground</include>
+		<control type="multiimage">
+			<depth>DepthBackground</depth>
+			<include>FullScreenDimensions</include>
+			<aspectratio>scale</aspectratio>
+			<fadetime>600</fadetime>
+			<animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
+			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<imagepath background="true">$VAR[HomeFanartVar]</imagepath>
+			<visible>!Player.HasMedia</visible>
+		</control>
+    <control type="group">
+      <animation effect="fade" start="0" end="100" time="100">WindowOpen</animation>
+      <animation effect="fade" start="100" end="0" time="100">WindowClose</animation>
+      <animation effect="fade" start="100" end="75" time="0" condition="true">Conditional</animation>
+      <visible>!Player.HasMedia + Skin.HasSetting(no_fanart) + !Skin.HasSetting(netflix_bg)</visible>
+      <include>ColoredBackgroundImages</include>
+    </control>
+		<include>DSTVHome</include>
+	</controls>
+</window>
